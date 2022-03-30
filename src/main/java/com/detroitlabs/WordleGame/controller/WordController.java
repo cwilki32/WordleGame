@@ -28,7 +28,7 @@ public class WordController {
 
     @RequestMapping("/page2")
     public String displayPage2(@RequestParam String keyword, ModelMap modelMap) {
-
+        modelMap.put("wordLength", letterRepository.getCharacterBanks().size());
         if (keyword.length() != letterRepository.getCharacterBanks().size()) {
             if (!secondGuessMade) {
                 return "errorMismatch";
@@ -39,7 +39,7 @@ public class WordController {
         secondGuessMade=true;
         modelMap.put("userGuess", keyword);
         modelMap.put("CharBank", letterRepository.getCharacterBanks());
-        modelMap.put("wordLength", letterRepository.getCharacterBanks().size());
+
         return "page2";
     }
 
@@ -49,7 +49,8 @@ public class WordController {
     }
 
     @RequestMapping("errorMismatchPage2")
-    public String displayErrorAfterSecondGuess() {
+    public String displayErrorAfterSecondGuess(ModelMap modelMap) {
+        modelMap.put("wordLength", letterRepository.getCharacterBanks().size());
         return "errorMismatchPage2";
     }
 }
