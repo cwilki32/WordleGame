@@ -37,9 +37,13 @@ public class WordController {
             }
         }
         secondGuessMade=true;
+
+        letterRepository.recordGuess(keyword);
+
+
         modelMap.put("userGuess", keyword);
         modelMap.put("CharBank", letterRepository.getCharacterBanks());
-
+        modelMap.put("PriorGuesses",letterRepository.getPriorGuesses());
         return "page2";
     }
 

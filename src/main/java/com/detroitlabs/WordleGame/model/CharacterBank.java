@@ -6,6 +6,16 @@ public class CharacterBank {//two strings
     String character;
     String color;
 
+    public CharacterBank(String character) {
+        this.character = character;
+        color = "#FFFFFF";
+    }
+
+    public CharacterBank(String character, String color){
+        this.character = character;
+        this.color = color;
+    }
+
     public String getCharacter() {
         return character;
     }
@@ -22,8 +32,5 @@ public class CharacterBank {//two strings
         this.color = color;
     }
 
-    public CharacterBank(String character) {
-        this.character = character;
-        color = "#FFFFFF";
-    }
+
 }

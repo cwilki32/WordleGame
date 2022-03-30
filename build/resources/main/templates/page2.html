@@ -14,10 +14,13 @@
 </form>
 
 <!--houses our guessing logic and color-->
-<div class="flex-container">
-    <div th:each="currentCharBank : ${CharBank}">
-        <!--            to fill the boxes with the characters of the word-->
-        <div th:background-color="${currentCharBank.color}" th:text="${currentCharBank.character}"></div>
+<div th:each="onePriorGuess : ${PriorGuesses}">
+    <div th:each="currentCharacter : ${onePriorGuess}">
+        <div class="flex-container">
+
+            <!--            to fill the boxes with the characters of the word-->
+            <div th:background-color="${currentCharacter.color}" th:text="${currentCharacter.character}"></div>
+        </div>
     </div>
 </div>
 

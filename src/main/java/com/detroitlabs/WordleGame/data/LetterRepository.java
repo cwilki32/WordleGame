@@ -13,18 +13,48 @@ public class LetterRepository { //generate word
     //check character with color response
     WordGeneratorService wordGeneratorService = new WordGeneratorService();
     ArrayList<CharacterBank> characterBanks = new ArrayList<>();
+    ArrayList<ArrayList<CharacterBank>> priorGuesses = new ArrayList<>();
+    String theWord;
 
     public LetterRepository() {
-        String theWord = wordGeneratorService.getWord()[0];
+        theWord = wordGeneratorService.getWord()[0];
         System.out.println(theWord);
+        characterBanks = stringToCharBankList(theWord);
+    }
+
+    public ArrayList<CharacterBank> stringToCharBankList(String theWord){
+        ArrayList<CharacterBank> tempBank = new ArrayList<>();
+
         while(theWord.length() > 0) {
             String x = theWord.substring(0,1);
             theWord = theWord.substring(1);
-            characterBanks.add(new CharacterBank(x));
+            tempBank.add(new CharacterBank(x));
         }
+
+        return tempBank;
     }
 
-    public List<CharacterBank> getCharacterBanks() {
+    public void recordGuess(String newGuess){
+        ArrayList<CharacterBank> tempBank = new ArrayList<>();
+
+
+        for(int i=0; i < newGuess.length(); i++){
+            if(newGuess.substring(i,i+1).equals(theWord.substring(i,i+1))){
+                System.out.println("One match");
+                tempBank.add(new CharacterBank(newGuess.substring(i,i+1), "#00FF00"));
+            } else {
+                tempBank.add(new CharacterBank(newGuess.substring(i,i+1)));
+            }
+        }
+
+        priorGuesses.add(tempBank);
+    }
+
+    public ArrayList<CharacterBank> getCharacterBanks() { // returns List
         return characterBanks;
+    }
+
+    public ArrayList<ArrayList<CharacterBank>> getPriorGuesses() {
+        return priorGuesses;
     }
 }
