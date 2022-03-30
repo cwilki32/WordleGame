@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/app.css}"/>
+    <title>Welcome to C&C Wordle</title>
 </head>
 <body>
 
@@ -12,15 +13,24 @@
     <input type="submit" value="Submit">
 </form>
 
+<div class="row">
 
-
-
-
-    <span>
+<!--houses our guessing logic and color-->
+    <div class="flex-container">
         <div th:each="currentCharBank : ${CharBank}">
-            <p>Test</p>
-
+<!--            to fill the boxes with the characters of the word-->
+            <div th:background-color="${currentCharBank.color}" text=" "></div>
         </div>
-    </span>
+    </div>
+
+</div>
+</div>
+
+<!--<div th:each="currentCharBank : ${CharBank}">-->
+
+<!--    <p>Test</p>-->
+
+<!--</div>-->
+
 </body>
 </html>

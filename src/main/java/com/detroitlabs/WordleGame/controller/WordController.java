@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.swing.*;
+
 @Controller
 public class WordController {
+    private boolean secondGuessMade = false;
 
     @Autowired
     LetterRepository letterRepository;
@@ -19,14 +22,34 @@ public class WordController {
     @RequestMapping("/")
     public String displayHome(ModelMap modelMap) {
         modelMap.put("CharBank", letterRepository.getCharacterBanks());
-        modelMap.put("wordLength",letterRepository.getCharacterBanks().size());
+        modelMap.put("wordLength", letterRepository.getCharacterBanks().size());
         return "home";
-
     }
 
     @RequestMapping("/page2")
-    public String displayPage2(@RequestParam String keyword, ModelMap modelMap){
+    public String displayPage2(@RequestParam String keyword, ModelMap modelMap) {
+
+        if (keyword.length() != letterRepository.getCharacterBanks().size()) {
+            if (!secondGuessMade) {
+                return "errorMismatch";
+            } else {
+                return "errorMismatchPage2";
+            }
+        }
+        secondGuessMade=true;
         modelMap.put("userGuess", keyword);
+        modelMap.put("CharBank", letterRepository.getCharacterBanks());
+        modelMap.put("wordLength", letterRepository.getCharacterBanks().size());
         return "page2";
+    }
+
+    @RequestMapping("/errorMismatch")
+    public String displayError() {
+        return "errorMismatch";
+    }
+
+    @RequestMapping("errorMismatchPage2")
+    public String displayErrorAfterSecondGuess() {
+        return "errorMismatchPage2";
     }
 }

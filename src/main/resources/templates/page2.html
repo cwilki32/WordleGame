@@ -13,6 +13,13 @@
     <input type="submit" value="Submit">
 </form>
 
+<!--houses our guessing logic and color-->
+<div class="flex-container">
+    <div th:each="currentCharBank : ${CharBank}">
+        <!--            to fill the boxes with the characters of the word-->
+        <div th:background-color="${currentCharBank.color}" th:text="${currentCharBank.character}"></div>
+    </div>
+</div>
 
 Page 2 success!
 <p th:text="${userGuess}"></p>
