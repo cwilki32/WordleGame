@@ -19,7 +19,12 @@
         <div th:each="currentCharacter : ${onePriorGuess}">
 
             <!--            to fill the boxes with the characters of the word-->
-            <div th:background-color="${currentCharacter.color}" th:text="${currentCharacter.character}"></div>
+            <!--<div th:background-color="${currentCharacter.color}" th:text="${currentCharacter.character}"></div>-->
+
+            <div class="box" th:style="'background-color:'+${currentCharacter.color}" th:text="'&nbsp&nbsp'+${currentCharacter.character}+'&nbsp&nbsp'"></div>
+
+
+
         </div>
     </div>
 </div>
