@@ -3,26 +3,19 @@
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" th:href="@{/app.css}" />
-    <title>Welcome to C&C Wordle</title>
-
+    <title>C&C Wordle</title>
 </head>
 <body>
 
 <form action="page2" method="get">
-    <label for="fname" th:text="'Please guess a '+${wordLength}+' letter word: '"></label>
+    <label for="fname">Please Guess the Word:</label>
     <input type="keyword" id="fname" name="keyword"><br><br>
     <input type="submit" value="Submit">
 </form>
 
 
+Page 2 success!
+<p th:text="${userGuess}"></p>
 
-
-
-    <span>
-        <div th:each="currentCharBank : ${CharBank}">
-            <p>Test</p>
-
-        </div>
-    </span>
 </body>
 </html>
