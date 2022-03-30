@@ -13,10 +13,7 @@ public class WordController {
     @ResponseBody
     @RequestMapping("/")
     public String displayWord() {
-        WordBank wordBank = wordGeneratorService.getWord();
-        System.out.println(wordBank.getRandomWord()[0]);
-        return wordBank.getRandomWord()[0];
+        return wordGeneratorService.getWord()[0];
 
     }
-
 }
