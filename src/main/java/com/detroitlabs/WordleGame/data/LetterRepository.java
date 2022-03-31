@@ -16,6 +16,8 @@ public class LetterRepository { //generate word
     ArrayList<ArrayList<CharacterBank>> priorGuesses = new ArrayList<>();
     String theWord;
 
+    public static int guessCount;
+
     public LetterRepository() {
         clearAll();
 //        do {
@@ -28,6 +30,7 @@ public class LetterRepository { //generate word
     public void clearAll(){
         characterBanks.clear();
         priorGuesses.clear();
+        guessCount = 0;
         do {
             theWord = wordGeneratorService.getWord()[0];
         } while (theWord.length() > 9);

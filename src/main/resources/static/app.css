@@ -18,8 +18,11 @@ body{
 }
 
 .box{
-    text-align: center;
+    text-align: right;
 }
 
+.center{
+    text-align: center;
+}
 
 

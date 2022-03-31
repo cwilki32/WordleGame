@@ -6,9 +6,12 @@
     <title>C&C Wordle</title>
 </head>
 <body>
-<a href="/">
-<button style="text-align: right" >Start new game</button>
-</a>
+<div>
+    <div class="box" th:text="'Guesses made: '+${guessCount}+'&nbsp&nbsp&nbsp'"></div>
+    <a class="box" href="/">
+        <button style="text-align: right" >Start new game</button>
+    </a>
+</div>
 <form action="page2" method="get">
     <label for="fname">Please Guess the Word:</label>
     <input type="keyword" id="fname" name="keyword"><br><br>
@@ -23,7 +26,7 @@
             <!--            to fill the boxes with the characters of the word-->
             <!--<div th:background-color="${currentCharacter.color}" th:text="${currentCharacter.character}"></div>-->
 
-            <div class="box" th:style="'background-color:'+${currentCharacter.color}" th:text="'&nbsp&nbsp'+${currentCharacter.character}+'&nbsp&nbsp'"></div>
+            <div th:style="'background-color:'+${currentCharacter.color}" th:text="'&nbsp&nbsp'+${currentCharacter.character}+'&nbsp&nbsp'"></div>
 
 
 

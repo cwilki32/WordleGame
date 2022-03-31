@@ -19,6 +19,7 @@ public class WordController {
     @Autowired
     LetterRepository letterRepository;
 
+
     @RequestMapping("/")
     public String displayHome(ModelMap modelMap) {
         letterRepository.clearAll();
@@ -39,6 +40,8 @@ public class WordController {
         }
         secondGuessMade = true;
         letterRepository.recordGuess(keyword);
+        LetterRepository.guessCount++; //LOOK AT OUR PUBLIC STATIC NUMBER!!!
+        modelMap.put("guessCount", LetterRepository.guessCount);
         modelMap.put("userGuess", keyword);
         modelMap.put("CharBank", letterRepository.getCharacterBanks());
         modelMap.put("PriorGuesses", letterRepository.getPriorGuesses());
