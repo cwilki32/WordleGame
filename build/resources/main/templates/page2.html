@@ -29,8 +29,8 @@
     </div>
 </div>
 
-Page 2 success!
-<p th:text="${userGuess}"></p>
+<div th:hidden="${!winCheck}">Congrats you won!</div>
+
 
 </body>
 </html>

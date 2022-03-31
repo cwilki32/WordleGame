@@ -14,7 +14,6 @@ public class WordGeneratorService {
 //        return randomWord[0];
                 return restTemplate.getForObject(
                 "http://random-word-api.herokuapp.com/word?number=1&swear=0", String[].class);
-
     }
 }
 

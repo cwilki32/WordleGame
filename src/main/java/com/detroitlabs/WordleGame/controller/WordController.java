@@ -36,14 +36,12 @@ public class WordController {
                 return "errorMismatchPage2";
             }
         }
-        secondGuessMade=true;
-
+        secondGuessMade = true;
         letterRepository.recordGuess(keyword);
-
-
         modelMap.put("userGuess", keyword);
         modelMap.put("CharBank", letterRepository.getCharacterBanks());
-        modelMap.put("PriorGuesses",letterRepository.getPriorGuesses());
+        modelMap.put("PriorGuesses", letterRepository.getPriorGuesses());
+        modelMap.put("winCheck", letterRepository.winCheck(keyword));
         return "page2";
     }
 
