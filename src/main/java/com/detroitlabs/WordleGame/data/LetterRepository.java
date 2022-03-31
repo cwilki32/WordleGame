@@ -20,23 +20,20 @@ public class LetterRepository { //generate word
 
     public LetterRepository() {
         clearAll();
-//        do {
-//            theWord = wordGeneratorService.getWord()[0];
-//        } while (theWord.length() > 9);
-//        System.out.println(theWord);
-//        characterBanks = stringToCharBankList(theWord);
     }
 
-    public void clearAll(){
+    public void clearAll() {
         characterBanks.clear();
         priorGuesses.clear();
         guessCount = 0;
         do {
             theWord = wordGeneratorService.getWord()[0];
         } while (theWord.length() > 9);
-        System.out.println(theWord);
         characterBanks = stringToCharBankList(theWord);
 
+    }
+    public String showAnswer() {
+        return theWord;
     }
 
     public ArrayList<CharacterBank> stringToCharBankList(String theWord) {
@@ -58,7 +55,6 @@ public class LetterRepository { //generate word
 
         for (int i = 0; i < newGuess.length(); i++) {
             if (newGuess.substring(i, i + 1).equals(theWord.substring(i, i + 1))) {
-                System.out.println("One match");
                 tempBank.add(new CharacterBank(newGuess.substring(i, i + 1), "#00FF00"));
                 coloredChars = coloredChars + newGuess.substring(i, i + 1);
             } else {
@@ -68,7 +64,6 @@ public class LetterRepository { //generate word
         for (int j = 0; j < newGuess.length(); j++) {
             if (!tempBank.get(j).getColor().equals("#00FF00")) {
                 if (theWord.contains(newGuess.substring(j, j + 1)) && countOfChar(coloredChars, newGuess.substring(j, j + 1)) < countOfChar(theWord, theWord.substring(j, j + 1))) {
-                    System.out.println("One contains");
                     tempBank.get(j).setColor("#FFFF00");
                     coloredChars = coloredChars + newGuess.substring(j, j + 1);
                 }
@@ -97,7 +92,7 @@ public class LetterRepository { //generate word
     }
 
     public boolean winCheck(String keyword) {
-        if(keyword.equals(theWord)) {
+        if (keyword.equals(theWord)) {
             return true;
         } else {
             return false;

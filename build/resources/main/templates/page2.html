@@ -7,16 +7,24 @@
 </head>
 <body>
 <div>
-    <div class="box" th:text="'Guesses made: '+${guessCount}+'&nbsp&nbsp&nbsp'"></div>
+
     <a class="box" href="/">
-        <button style="text-align: right" >Start new game</button>
+        <button class="right">Start new game</button><br><br>
     </a>
+
+    <div class="right">
+        <form action="page2" method="get">
+            <input type="submit" value="Solve Puzzle" name="keyword">
+        </form>
+    </div>
 </div>
 <form action="page2" method="get">
     <label for="fname">Please Guess the Word:</label>
     <input type="keyword" id="fname" name="keyword"><br><br>
     <input type="submit" value="Submit">
 </form>
+<br>
+<div class="box" th:text="'Guesses made: '+${guessCount}+'&nbsp&nbsp&nbsp'"></div>
 
 <!--houses our guessing logic and color-->
 <div th:each="onePriorGuess : ${PriorGuesses}">
@@ -26,17 +34,13 @@
             <!--            to fill the boxes with the characters of the word-->
             <!--<div th:background-color="${currentCharacter.color}" th:text="${currentCharacter.character}"></div>-->
 
-            <div th:style="'background-color:'+${currentCharacter.color}" th:text="'&nbsp&nbsp'+${currentCharacter.character}+'&nbsp&nbsp'"></div>
-
-
+            <div th:style="'background-color:'+${currentCharacter.color}" th:text="'&nbsp'+${currentCharacter.character}"></div>
 
         </div>
     </div>
 </div>
 
 <div th:hidden="${!winCheck}">Congrats you won!</div>
-
-
 
 </body>
 </html>

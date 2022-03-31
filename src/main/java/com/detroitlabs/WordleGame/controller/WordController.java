@@ -30,6 +30,9 @@ public class WordController {
 
     @RequestMapping("/page2")
     public String displayPage2(@RequestParam String keyword, ModelMap modelMap) {
+        if(keyword.equals("Solve Puzzle")) {
+            keyword=letterRepository.showAnswer();
+        }
         modelMap.put("wordLength", letterRepository.getCharacterBanks().size());
         if (keyword.length() != letterRepository.getCharacterBanks().size()) {
             if (!secondGuessMade) {
@@ -46,6 +49,7 @@ public class WordController {
         modelMap.put("CharBank", letterRepository.getCharacterBanks());
         modelMap.put("PriorGuesses", letterRepository.getPriorGuesses());
         modelMap.put("winCheck", letterRepository.winCheck(keyword));
+        modelMap.put("showAnswer", letterRepository.showAnswer());
         return "page2";
     }
 

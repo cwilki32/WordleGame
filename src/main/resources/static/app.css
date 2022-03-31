@@ -5,6 +5,7 @@ body{
 .flex-container {
     display: flex;
     background-color: DodgerBlue;
+    padding: 5px;
 }
 
 .flex-container > div {
@@ -23,6 +24,9 @@ body{
 
 .center{
     text-align: center;
+}
+.right{
+    float:right;
 }
 
 
