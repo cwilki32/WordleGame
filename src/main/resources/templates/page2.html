@@ -6,7 +6,9 @@
     <title>C&C Wordle</title>
 </head>
 <body>
-
+<a href="/">
+<button style="text-align: right" >Start new game</button>
+</a>
 <form action="page2" method="get">
     <label for="fname">Please Guess the Word:</label>
     <input type="keyword" id="fname" name="keyword"><br><br>
@@ -30,6 +32,7 @@
 </div>
 
 <div th:hidden="${!winCheck}">Congrats you won!</div>
+
 
 
 </body>

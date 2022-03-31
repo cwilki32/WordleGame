@@ -17,11 +17,23 @@ public class LetterRepository { //generate word
     String theWord;
 
     public LetterRepository() {
+        clearAll();
+//        do {
+//            theWord = wordGeneratorService.getWord()[0];
+//        } while (theWord.length() > 9);
+//        System.out.println(theWord);
+//        characterBanks = stringToCharBankList(theWord);
+    }
+
+    public void clearAll(){
+        characterBanks.clear();
+        priorGuesses.clear();
         do {
             theWord = wordGeneratorService.getWord()[0];
         } while (theWord.length() > 9);
         System.out.println(theWord);
         characterBanks = stringToCharBankList(theWord);
+
     }
 
     public ArrayList<CharacterBank> stringToCharBankList(String theWord) {

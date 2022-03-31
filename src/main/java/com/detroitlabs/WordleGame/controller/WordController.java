@@ -21,6 +21,7 @@ public class WordController {
 
     @RequestMapping("/")
     public String displayHome(ModelMap modelMap) {
+        letterRepository.clearAll();
         modelMap.put("CharBank", letterRepository.getCharacterBanks());
         modelMap.put("wordLength", letterRepository.getCharacterBanks().size());
         return "home";
