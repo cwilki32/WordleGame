@@ -18,10 +18,12 @@ public class LetterRepository { //generate word
 
     public static int guessCount;
 
+
     public LetterRepository() {
         clearAll();
     }
 
+    //clears all lists and counts to start a new game
     public void clearAll() {
         characterBanks.clear();
         priorGuesses.clear();
@@ -32,10 +34,12 @@ public class LetterRepository { //generate word
         characterBanks = stringToCharBankList(theWord);
 
     }
+    //gives the word to user if requested
     public String showAnswer() {
         return theWord;
     }
 
+    //builds a character bank from the word
     public ArrayList<CharacterBank> stringToCharBankList(String theWord) {
         ArrayList<CharacterBank> tempBank = new ArrayList<>();
 
@@ -48,6 +52,8 @@ public class LetterRepository { //generate word
         return tempBank;
     }
 
+    //records the guess and checks to see if the characters match the word
+    //green if same spot, yellow if in word but different spot, no change if not present
     public void recordGuess(String newGuess) {
         ArrayList<CharacterBank> tempBank = new ArrayList<>();
         String coloredChars = "";
@@ -72,6 +78,7 @@ public class LetterRepository { //generate word
         priorGuesses.add(tempBank);
     }
 
+    //keeps track of letters guessed, makes sure there aren't duplicate highlighted
     public int countOfChar(String wordCheck, String theLetter) {
         int count = 0;
         for (int i = 0; i < wordCheck.length(); i++) {
@@ -91,6 +98,7 @@ public class LetterRepository { //generate word
         return priorGuesses;
     }
 
+    //method to see if the user has won, checks to see if guess = the word
     public boolean winCheck(String keyword) {
         if (keyword.equals(theWord)) {
             return true;

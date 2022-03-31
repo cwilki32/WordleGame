@@ -7,23 +7,26 @@
 </head>
 <body>
 <div>
-
+<!--to start a new game-->
     <a class="box" href="/">
         <button class="right">Start new game</button><br><br>
     </a>
 
+<!--    to solve the puzzle-->
     <div class="right">
         <form action="page2" method="get">
             <input type="submit" value="Solve Puzzle" name="keyword">
         </form>
     </div>
 </div>
+<!--for the user to input their guess-->
 <form action="page2" method="get">
     <label for="fname">Please Guess the Word:</label>
     <input type="keyword" id="fname" name="keyword"><br><br>
     <input type="submit" value="Submit">
 </form>
 <br>
+<!--counts the number of guesses made-->
 <div class="box" th:text="'Guesses made: '+${guessCount}+'&nbsp&nbsp&nbsp'"></div>
 
 <!--houses our guessing logic and color-->
