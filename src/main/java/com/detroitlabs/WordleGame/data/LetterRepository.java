@@ -69,7 +69,7 @@ public class LetterRepository { //generate word
         }
         for (int j = 0; j < newGuess.length(); j++) {
             if (!tempBank.get(j).getColor().equals("#00FF00")) {
-                if (theWord.contains(newGuess.substring(j, j + 1)) && countOfChar(coloredChars, newGuess.substring(j, j + 1)) <= countOfChar(theWord, theWord.substring(j, j + 1))) {
+                if (theWord.contains(newGuess.substring(j, j + 1)) && countOfChar(coloredChars, newGuess.substring(j, j + 1)) < countOfChar(theWord, newGuess.substring(j, j + 1))) {
                     tempBank.get(j).setColor("#FFFF00");
                     coloredChars = coloredChars + newGuess.substring(j, j + 1);
                 }
