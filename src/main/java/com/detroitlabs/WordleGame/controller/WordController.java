@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.swing.*;
+import java.util.Locale;
 
 @Controller
 public class WordController {
@@ -33,6 +34,7 @@ public class WordController {
         if(keyword.equals("Solve Puzzle")) {
             keyword=letterRepository.showAnswer();
         }
+        keyword = keyword.toLowerCase();
         modelMap.put("wordLength", letterRepository.getCharacterBanks().size());
         if (keyword.length() != letterRepository.getCharacterBanks().size()) {
             if (!secondGuessMade) {
